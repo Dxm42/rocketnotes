@@ -7,14 +7,14 @@ export function Note({data, ...rest}){
             <h1>{data.title}</h1>
 
             {
-                data.tags && 
+                data.tag && 
                 <footer>
                     {
-                        data.tags.map(tag => <Tag key={tag.id}  title={tag.name} />
-                        )
-                    }
+                        data.tag.map((tag) => <Tag key={tag.id}  title={tag.name} />)                    
+                    }                   
                 </footer>
             }
+            
         </Container>
     )
 }
