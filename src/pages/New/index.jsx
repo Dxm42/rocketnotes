@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +11,7 @@ import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
 
 import { api } from '../../services/api';
+import { ButtonText } from '../../components/ButtonText';
 
 export function New(){
     const [title, setTitle] = useState("");
@@ -24,6 +24,10 @@ export function New(){
     const [newTag, setNewTag] = useState("");
 
     const navigate = useNavigate();
+
+    function handleBack(){
+        navigate(-1);
+      }
 
     function handleAdLink(){
         setLinks(prevState => [...prevState, newLink])
@@ -65,7 +69,7 @@ export function New(){
             links
         });
         alert("Nota criada com sucesso!");
-        navigate("/")
+        navigate(-1)
     }
 
 
@@ -76,8 +80,8 @@ export function New(){
             <main >
                 <Form>
                     <header>
-                        <h1>Criar nota</h1>
-                        <Link to="/">voltar</Link>
+                        <h1>Criar nota</h1>                        
+                        <ButtonText title="voltar" onClick={handleBack}/>
                     </header>
 
                     <Input 
